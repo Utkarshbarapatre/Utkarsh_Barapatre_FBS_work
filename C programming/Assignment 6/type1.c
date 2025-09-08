@@ -21,6 +21,21 @@ void greatest_of_three();
 void marks_based_result();
 void three_side_triangle();
 void two_no_perators();
+void print_numbers();
+void tables();
+void sum_to_five();
+void prime();
+void armstrong();
+void perfect();
+void factorial();
+void strong_number();
+void palindrome_three();
+void sum_of_first_and_last_digit();
+void range_armstrong();
+void menu_driven();
+void range_perfect_number();
+void range_prime();
+void range_strong_number();
 
 
 
@@ -48,12 +63,21 @@ void main(){
 	marks_based_result();
 	three_side_triangle();
 	two_no_perators();
-	
-	
-	
-	
-	
-	
+	print_numbers();
+	tables();
+	sum_to_five();
+	prime();
+	armstrong();
+	perfect();
+	factorial();
+	strong_number();
+	palindrome_three();
+	sum_of_first_and_last_digit();
+	range_armstrong();
+	menu_driven();
+	range_perfect_number();
+	range_prime();
+	range_strong_number();
 }//main ends here
 void sum(){
 	int a=2,b=6;
@@ -171,9 +195,9 @@ void vote_eligible(){
 void accept_price(){
 	int price,fprice;
 	char ch;
-	printf("Enter Price ");
+	printf("\nEnter Price ");
 	scanf(" %d",&price);
-	printf("Enter whether you are student y or n: ");
+	printf("\nEnter whether you are student y or n: ");
 	scanf(" %c",&ch);
 	if(ch=='y'){
 		if(price>=500){
@@ -201,7 +225,7 @@ void accept_price(){
 
 void age_check(){
 	int age;
-	printf("Enter your age: ");
+	printf("\nEnter your age: ");
 	scanf("%d",&age);
 	if(age<12){
 		printf("\nChild");
@@ -225,7 +249,7 @@ void age_check(){
 }
 void divisible_by_three_or_five(){
 	int a;
-	printf("Enter a no: ");
+	printf("\nEnter a no: ");
 	scanf(" %d",&a);
 	if(a%3==0 && a%5!=0){
 		printf("\nno. is divisible by 3 not 5");
@@ -246,11 +270,11 @@ void divisible_by_three_or_five(){
 
 void greatest_of_three(){
 	int a,b,c;
-	printf("Enter number a: ");
+	printf("\nEnter number a: ");
 	scanf("%d",&a);
-	printf("Enter number b: ");
+	printf("\nEnter number b: ");
 	scanf("%d",&b);
-	printf("Enter number c: ");
+	printf("\nEnter number c: ");
 	scanf("%d",&c);
 	if(a>b){
 		printf("A is greater");
@@ -272,7 +296,7 @@ void greatest_of_three(){
 }
 void marks_based_result(){
 	float marks;
-	printf("Enter Marks: ");
+	printf("\nEnter Marks: ");
 	scanf(" %f",&marks);
 	if(marks>=75){
 		printf("Distinction");
@@ -305,60 +329,353 @@ void marks_based_result(){
 
 void three_side_triangle(){
 	int t1,t2,t3;
-	printf("Enter side 1: ");
+	printf("\nEnter side 1: ");
 	scanf("%d",&t1);
-	printf("Enter side 2: ");
+	printf("\nEnter side 2: ");
 	scanf("%d",&t2);
-	printf("Enter side 3: ");
+	printf("\nEnter side 3: ");
 	scanf("%d",&t3);
 	if(t1==t2 && t1==t3 && t2==t3){
-		printf("Equilateral Triangle");
+		printf("\nEquilateral Triangle");
 	}
 	else{
 		if(t1==t2 || t1==t3 || t2==t3){
-			printf("Isosceles Triangle");
+			printf("\nIsosceles Triangle");
 			
 		}
 		else{
-			printf("Scalene");
+			printf("\nScalene");
 		}
 	}
 }
 void two_no_perators(){
 	int a,b;
 	char op;
-	printf("Enter no. 1 ");
+	printf("\nEnter no. 1 ");
 	scanf("%d",&a);
-	printf("Enter no. 2 ");
+	printf("\nEnter no. 2 ");
 	scanf("%d",&b);
-	printf("Enter operator like %+-/*  ");
+	printf("\nEnter operator like %+-/*  ");
 	scanf(" %c",&op);
 	if(op=='+'){
-		printf("Addition is: %d",a+b);
+		printf("Addition is: %d\n",a+b);
 		}
 	else{
 		if(op=='-')
 		{
-		printf("Substract is: %d",a-b);
+		printf("Substract is: %d\n",a-b);
 		}
 		else
 		{
 			if(op=='%'){
-				printf("Mod is: %d",a%b);
+				printf("Mod is: %d\n",a%b);
 			}
 			else{
 				if(op=='/'){
-					printf("Division is: %d",a/b);
+					printf("Division is: %d\n",a/b);
 				}
 				else{
 					if(op=='*'){
-						printf("Multiply is: %d",a*b);
+						printf("Multiply is: %d\n",a*b);
 					}
 				}
 			}
 		}
 	}
 }
+void print_numbers(){
+	int i=0;
+	while(i<=9){
+		i++;
+		printf("%d ",i);
+	}
+	 printf("\n ");
+}
+void tables(){
+	int n=1;
+	while(n<=10){
+		printf("%d \n",5*n);
+		n++;
+	}
+}
+void sum_to_five(){
+	int i=1,n=5,sum=0;
+	while(i<=n){
+		sum+=i;
+		i++;
+		
+	}
+	printf("\nSum is %d from 1 to 5",sum);
+}
+void prime(){
+	int n=7;
+    int i=2;
+    int prime=1; 
+    while (i<=n/2) {
+        if (n%i==0) {
+            prime=0;
+            break;
+        }
+        i++;
+    }
+    if (prime && n>1) {
+        printf("\nPrime");
+    } else {
+        printf("\nNot Prime");
+    }
+}
+void armstrong(){
+	int n=153,rem,sum=0;
+	while(n>0){
+		rem=n%10;
+		sum=sum+rem*rem*rem;
+		n=n/10;
+	}
+	printf("%d",sum);
+	if(n==n){
+		printf("\nArmstrong");	
+	}
+	else{
+		printf("\nNot Armstrong");
+	}
+}
+
+void perfect(){
+	int n=28;
+	int sum=0;
+	int i=1;
+	while(i<n){
+		if(n%i==0){
+			sum=sum+i;
+		}
+		i++;
+	}
+	if(sum==n){
+		printf("\nPerfect Number");
+	}
+	else{
+		printf("\nNot a Perfect number");
+	}
+}
+void factorial(){
+	int n=5;
+	int fct=1;
+	int i=1;
+	while(i<=n){
+		fct=fct*i;
+		i++;
+	}
+	printf("\nFactorial is %d",fct);
+}
+
+void strong_number(){
+	int n=145;
+    int temp=n;   
+    int sum=0,rem;
+    while(n>0) {
+        rem=n%10;
+        int fact=1;   
+        int i=1;
+        while(i<=rem){
+            fact*=i;
+            i++;
+        }
+        sum+=fact;
+        n/=10;
+    }
+    if(sum==temp) {
+        printf("\nStrong Number");
+    } else {
+        printf("\nNot a Strong Number");
+    }
+}
+void palindrome_three(){
+	int rev=0,rem;
+	int n=121,q1=n;
+	while(n>0){
+		rem=n%10;
+		rev=rev*10+rem;
+		n=n/10;
+	}
+	if(q1==rev){
+		printf("\npalindrome");
+	}
+	else{
+		printf("\nnot palindrome");
+	}
+}
+void sum_of_first_and_last_digit(){
+	int n=12345;
+	int q1,r1,r2;
+	r1=n%10;
+	q1=n;
+	while(q1>=10){
+		q1=q1/10;
+	}
+	r2=q1;
+	printf("\nSum of first and last digit is:%d ",r1+r2);
+}
+void range_armstrong(){
+	int no,sum=0,count=0,i,res,rem,temp;
+	printf("\nEnter a number ");
+	scanf("%d",&no);
+	for(int num = 1; num <= no; num++) {
+        int temp = num, sum = 0, count = 0, rem, res;
+		while(temp>0){
+			count++;
+			temp=temp/10;
+		}
+		temp=num;
+		while(temp>0){
+			rem=temp%10;
+			res=1;
+			for(i=1;i<=count;i++){
+				res=res*rem;
+			}
+			sum=sum+res;
+			temp=temp/10;
+		}
+		if(sum==num){
+			printf("%d ",num);
+		}
+	}
+}
+
+void menu_driven(){
+	int no,ch;
+	printf("Enter a number ");
+	scanf("%d",&no);
+	printf("Enter a choice press : \n1.Check Even Odd\n2.Check Prime number\n3.Check Palindrome number\n4.Check number Postive or Negative\n5.To reverse a number\n6.To find sum\n ");
+	scanf("%d",&ch);
+	if(ch==1){
+		if(no%2==0){
+			printf("Even");
+		}
+		else{
+			printf("Odd");
+		}
+	}
+	if(ch==2){
+		int i=2;
+    	int prime=1; 
+    	while (i<=no/2) {
+       	 if (no%i==0) {
+          	  prime=0;
+           	 break;
+       		 }
+        	i++;
+    	}
+   		if (prime && no>1) {
+       		 printf("Prime");
+    		} 
+		else {
+        	printf("Not Prime");
+    	}
+	}
+	if(ch==3){
+		int rev=0,rem;
+		int q1=no;
+		while(no>0){
+			rem=no%10;
+			rev=rev*10+rem;
+			no=no/10;
+		}
+		if(q1==rev){
+			printf("Palindrome");
+		}
+		else{
+			printf("Not Palindrome");
+		}
+	}
+	if(ch==4){
+		if(no>0){
+			printf("Positive");
+		}
+		else if(no<0){
+			printf("Negative");
+		}
+		else
+			printf("Number is 0");
+	}
+	if(ch==5){
+		int rev=0,rem;
+		int q1=no;
+		while(no>0){
+			rem=no%10;
+			rev=rev*10+rem;
+			no=no/10;
+		}
+		printf("%d",rev);
+		
+	}
+	if(ch==6){
+		int sum=0,rev,rem;
+		while(no>0){
+			rem=no%10;
+			sum=sum+rem;
+			no=no/10;
+		}
+		printf("%d",sum);
+	}
+}
+
+void range_perfect_number(){
+	int no,i,j,sum;
+	printf("\nEnter a number "); 
+	scanf("%d",&no);
+	for(i=1;i<=no;i++){
+		sum=0;
+		for(j=1;j<i;j++){
+			if(i%j==0)
+			sum=sum+j;
+		}
+		if(sum==i){
+		printf("%d ",i);
+	}
+		
+	}
+}
+void range_prime(){
+	int no,num,count=0,i;
+	printf("\nEnter a number "); 
+	scanf("%d",&no);
+	for(num=1;num<=no;num++){
+		count=0;
+		for(i=1;i<=num;i++){
+			if(num%i==0){
+				count++;
+			}
+			
+		}
+		if(count==2){
+			printf("%d ",num);
+		}	
+	}
+}
+
+void range_strong_number(){
+	int no,rem,fact,temp,sum,num;
+	printf("\nEnter nuumber ");
+	scanf("%d",&no);
+	for(num=1;num<=no;num++){
+		temp=num;
+		sum=0;
+		while(temp>0){
+			rem=temp%10;
+			fact=1;
+			for(int i=1;i<=rem;i++){
+				fact=fact*i;
+			}
+			sum=sum+fact;
+			temp=temp/10;
+		}
+		if(sum==num){
+			printf("%d ",num);
+		}
+	}
+}
+
+
 
 
 
