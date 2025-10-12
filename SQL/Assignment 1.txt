@@ -1,0 +1,123 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.43 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| emp                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.10 sec)
+
+mysql> create database country;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use country;
+Database changed
+mysql> create table countries(country_id int(10),country_name varchar(20),region_id int(10));
+Query OK, 0 rows affected, 2 warnings (0.05 sec)
+
+mysql> describe countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> create table jobs(job_id int(5) primary key,job_title varchar(30) not null,min_salary decimal(10,2),max_salary decimal(10,2) check(max_salary<=25000));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> create table job_history(employee_id int(5),start_date date,end_date date,job_id int primary key,department_id int(5));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> describe job_history;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| employee_id   | int  | YES  |     | NULL    |       |
+| start_date    | date | YES  |     | NULL    |       |
+| end_date      | date | YES  |     | NULL    |       |
+| job_id        | int  | NO   | PRI | NULL    |       |
+| department_id | int  | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table countries modify country_id int unique;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create table job(job_id int primary key,job_title varchar(20) default '' ,min_salary int default '8000',max_salary int default null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc job;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | NO   | PRI | NULL    |       |
+| job_title  | varchar(20) | YES  |     |         |       |
+| min_salary | int         | YES  |     | 8000    |       |
+| max_salary | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table department(dep_id decimal(4,0) not null default 0,department_name varchar(20) not null,manager_id decimal(6,0) not null default 0,location_id decimal(4,0) default null,
+    -> primary key(dep_id,manager_id));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| dep_id          | decimal(4,0) | NO   | PRI | 0       |       |
+| department_name | varchar(20)  | NO   |     | NULL    |       |
+| manager_id      | decimal(6,0) | NO   | PRI | 0       |       |
+| location_id     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table employees(emp_id int primary key,
+    -> f_name varchar(20),l_name varchar(20),
+    -> email varchar(30),phone int,hire_date date,
+    -> job_id int,salary decimal(10,2),
+    -> commission int,dep_id decimal(4,0),
+    -> manager_id decimal(6,0),
+    -> foreign key(dep_id,manager_id)
+    -> references department(dep_id,manager_id));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc employees;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| emp_id     | int           | NO   | PRI | NULL    |       |
+| f_name     | varchar(20)   | YES  |     | NULL    |       |
+| l_name     | varchar(20)   | YES  |     | NULL    |       |
+| email      | varchar(30)   | YES  |     | NULL    |       |
+| phone      | int           | YES  |     | NULL    |       |
+| hire_date  | date          | YES  |     | NULL    |       |
+| job_id     | int           | YES  |     | NULL    |       |
+| salary     | decimal(10,2) | YES  |     | NULL    |       |
+| commission | int           | YES  |     | NULL    |       |
+| dep_id     | decimal(4,0)  | YES  | MUL | NULL    |       |
+| manager_id | decimal(6,0)  | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
